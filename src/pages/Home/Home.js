@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Section, Headline, ListItem, LinkItem } from './Home.styled';
@@ -13,7 +14,7 @@ export const Home = () => {
         );
         setMovies(response.data.results);
       } catch (err) {
-        console.error(err.message);
+        toast(err.message);
       }
     };
 

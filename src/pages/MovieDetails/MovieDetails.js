@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MovieCard } from 'components/MovieCard/MovieCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -25,16 +26,14 @@ export const MovieDetails = () => {
   return (
     <div>
       {movieDetails && (
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`}
-            alt={movieDetails.title}
-          />
-          <div>
-            <h3></h3>
-            <p></p>
-          </div>
-        </div>
+        <MovieCard
+          genres={movieDetails.genres}
+          overview={movieDetails.overview}
+          poster_path={movieDetails.poster_path}
+          release_date={movieDetails.release_date}
+          title={movieDetails.title}
+          vote_average={movieDetails.vote_average}
+        />
       )}
     </div>
   );
