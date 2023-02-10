@@ -14,7 +14,6 @@ export const MovieDetails = () => {
           `https://api.themoviedb.org/3/movie/${movieId}?api_key=f9d814745439162b2afd5ff7833832ed`
         );
         setMovieDeteils(response.data);
-        console.log(response.data);
       } catch (err) {
         console.error(err.message);
       }
