@@ -1,5 +1,5 @@
-import { toast } from 'react-toastify';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { Section, Headline, ListItem, LinkItem } from './Home.styled';
 

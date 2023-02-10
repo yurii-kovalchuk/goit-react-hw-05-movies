@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -15,7 +16,7 @@ export const MovieDetails = () => {
         );
         setMovieDeteils(response.data);
       } catch (err) {
-        console.error(err.message);
+        toast(err.message);
       }
     };
 
