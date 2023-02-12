@@ -2,11 +2,15 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { TiArrowBackOutline } from 'react-icons/ti';
+import { BackBtn, WrapMovieDetail } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDeteils] = useState(null);
+  const location = useLocation();
+  const backHref = location.state?.from ?? '/';
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -24,7 +28,13 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <WrapMovieDetail>
+      <Link to={backHref}>
+        <BackBtn type="button">
+          <TiArrowBackOutline />
+          <span> Go back</span>
+        </BackBtn>
+      </Link>
       {movieDetails && (
         <MovieCard
           genres={movieDetails.genres}
@@ -35,6 +45,6 @@ export const MovieDetails = () => {
           vote_average={movieDetails.vote_average}
         />
       )}
-    </div>
+    </WrapMovieDetail>
   );
 };

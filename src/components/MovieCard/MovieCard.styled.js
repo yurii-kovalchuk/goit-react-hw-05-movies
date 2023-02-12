@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const WrapMovieCard = styled.div`
-  padding: 10px;
+  padding-top: 10px;
 `;
 export const WrapMainInfo = styled.div`
   display: flex;
