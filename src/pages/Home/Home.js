@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { Section, Headline, ListItem, LinkItem } from './Home.styled';
+import { HomeSection, Headline } from './Home.styled';
+
+import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useLocation } from 'react-router-dom';
 
 export const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,17 +26,9 @@ export const Home = () => {
   }, []);
 
   return (
-    <Section>
+    <HomeSection>
       <Headline>Popular movies</Headline>
-      <ul>
-        {movies.map(movie => (
-          <ListItem key={movie.id}>
-            <LinkItem to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title}
-            </LinkItem>
-          </ListItem>
-        ))}
-      </ul>
-    </Section>
+      {movies && <MoviesList movies={movies} location={location} />}
+    </HomeSection>
   );
 };
