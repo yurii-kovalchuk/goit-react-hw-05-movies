@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ActorCard } from 'components/ActorCard/ActorCard';
+import { ArtistCard } from 'components/ArtistCard/ArtistCard';
 
 export const Cast = () => {
   const [cast, setCast] = useState(null);
@@ -15,7 +15,6 @@ export const Cast = () => {
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=f9d814745439162b2afd5ff7833832ed`
         );
         setCast(response.data.cast);
-        console.dir(response.data.cast);
       } catch (err) {
         toast(err.message);
       }
@@ -27,12 +26,12 @@ export const Cast = () => {
     <div>
       <ul>
         {cast &&
-          cast.map(actor => (
-            <li key={actor.credit_id}>
-              <ActorCard
-                name={actor.name}
-                character={actor.character}
-                profile_path={actor.profile_path}
+          cast.map(artist => (
+            <li key={artist.credit_id}>
+              <ArtistCard
+                name={artist.name}
+                character={artist.character}
+                profile_path={artist.profile_path}
               />
             </li>
           ))}

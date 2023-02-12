@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const WrapMovieCard = styled.div`
   padding: 10px;
@@ -15,4 +16,16 @@ export const WrapMainText = styled.div`
 
 export const WrapAdditionInfo = styled.div`
   border-bottom: 1px solid grey;
+`;
+
+export const AdditionalItem = styled(NavLink)`
+  color: black;
+  text-decoration: none;
+  &:hover,
+  :focus {
+    text-decoration: underline;
+  }
+  :active {
+    color: red;
+  }
 `;

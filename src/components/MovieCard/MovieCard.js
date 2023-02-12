@@ -1,9 +1,10 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {
   WrapMainText,
   WrapMainInfo,
   WrapAdditionInfo,
   WrapMovieCard,
+  AdditionalItem,
 } from './MovieCard.styled';
 
 export const MovieCard = ({
@@ -16,7 +17,7 @@ export const MovieCard = ({
 }) => {
   const date = release_date.slice(0, 4);
   const genresNames = genres.map(genre => genre.name).join(', ');
-  const userScore = vote_average * 10;
+  const userScore = Math.round(vote_average * 10);
 
   return (
     <WrapMovieCard>
@@ -40,10 +41,10 @@ export const MovieCard = ({
         <p>Additional information</p>
         <ul>
           <li>
-            <NavLink to={`cast`}>Cast</NavLink>
+            <AdditionalItem to={`cast`}>Cast</AdditionalItem>
           </li>
           <li>
-            <NavLink to={`reviews`}>Reviews</NavLink>
+            <AdditionalItem to={`reviews`}>Reviews</AdditionalItem>
           </li>
         </ul>
       </WrapAdditionInfo>
