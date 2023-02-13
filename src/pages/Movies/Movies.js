@@ -6,7 +6,7 @@ import { MovieSection } from './Movies.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
-  const [queryMovies, setQueryMovies] = useState('');
+  const [queryMovies, setQueryMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const getQuery = searchParams.get('query') ?? '';
 
@@ -14,7 +14,7 @@ const Movies = () => {
     e.preventDefault();
     const value = e.currentTarget.elements.query.value.trim();
     if (value === '') {
-      toast('please fill in field');
+      toast('Please fill in field');
       return;
     }
     setSearchParams({ query: value });
@@ -23,11 +23,18 @@ const Movies = () => {
 
   useEffect(() => {
     const fetchQueryMovies = async () => {
+      if (getQuery === '') {
+        return;
+      }
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/search/movie?api_key=f9d814745439162b2afd5ff7833832ed&query=${getQuery}`
         );
-        setQueryMovies(response.data.results);
+        const { results, total_results } = response.data;
+        setQueryMovies(results);
+        if (total_results === 0) {
+          toast('There are no movies with this name');
+        }
       } catch (err) {
         toast(err.message);
       }
