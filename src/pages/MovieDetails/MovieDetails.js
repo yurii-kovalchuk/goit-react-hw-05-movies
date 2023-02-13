@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { BackBtn, WrapMovieDetail } from './MovieDetails.styled';
@@ -10,7 +10,7 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDeteils] = useState(null);
   const location = useLocation();
-  const backHref = location.state?.from ?? '/';
+  const backHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -29,7 +29,7 @@ export const MovieDetails = () => {
 
   return (
     <WrapMovieDetail>
-      <Link to={backHref}>
+      <Link to={backHref.current}>
         <BackBtn type="button">
           <TiArrowBackOutline />
           <span> Go back</span>

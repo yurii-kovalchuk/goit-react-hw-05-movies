@@ -4,11 +4,9 @@ import { useEffect, useState } from 'react';
 import { HomeSection, Headline } from './Home.styled';
 
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import { useLocation } from 'react-router-dom';
 
 export const Home = () => {
   const [movies, setMovies] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
     const fetchPopular = async () => {
@@ -28,7 +26,7 @@ export const Home = () => {
   return (
     <HomeSection>
       <Headline>Popular movies</Headline>
-      {movies && <MoviesList movies={movies} location={location} />}
+      {movies && <MoviesList movies={movies} />}
     </HomeSection>
   );
 };

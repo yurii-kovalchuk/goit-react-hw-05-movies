@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { MovieSection } from './Movies.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
@@ -9,7 +9,6 @@ export const Movies = () => {
   const [queryMovies, setQueryMovies] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const getQuery = searchParams.get('query') ?? '';
-  const location = useLocation();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -43,7 +42,7 @@ export const Movies = () => {
         <input type="text" name="query" />
         <button type="submit">Search</button>
       </form>
-      {queryMovies && <MoviesList movies={queryMovies} location={location} />}
+      {queryMovies && <MoviesList movies={queryMovies} />}
     </MovieSection>
   );
 };
