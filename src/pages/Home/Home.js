@@ -5,7 +5,7 @@ import { HomeSection, Headline } from './Home.styled';
 
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
@@ -30,3 +30,5 @@ export const Home = () => {
     </HomeSection>
   );
 };
+
+export default Home;

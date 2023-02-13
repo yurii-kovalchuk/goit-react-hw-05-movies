@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { MovieCard } from 'components/MovieCard/MovieCard';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
+import { MovieCard } from 'components/MovieCard/MovieCard';
 import { BackBtn, WrapMovieDetail } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDeteils] = useState(null);
   const location = useLocation();
@@ -48,3 +48,5 @@ export const MovieDetails = () => {
     </WrapMovieDetail>
   );
 };
+
+export default MovieDetails;

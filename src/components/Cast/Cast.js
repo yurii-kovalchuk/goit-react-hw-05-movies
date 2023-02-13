@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArtistCard } from 'components/ArtistCard/ArtistCard';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
 
@@ -39,3 +39,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast;

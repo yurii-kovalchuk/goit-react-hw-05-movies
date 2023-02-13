@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ReviewsList } from '../ReviewsList/ReviewsList';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
@@ -24,3 +24,5 @@ export const Reviews = () => {
   }, [movieId]);
   return <div>{reviews && <ReviewsList reviews={reviews} />}</div>;
 };
+
+export default Reviews;

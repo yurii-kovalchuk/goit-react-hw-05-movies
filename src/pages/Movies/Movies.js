@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MovieSection } from './Movies.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Movies = () => {
+const Movies = () => {
   const [queryMovies, setQueryMovies] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const getQuery = searchParams.get('query') ?? '';
@@ -46,3 +46,5 @@ export const Movies = () => {
     </MovieSection>
   );
 };
+
+export default Movies;
