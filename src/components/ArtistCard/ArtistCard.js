@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { WrapArtistCard } from './ArtistCard.styled';
 
 export const ArtistCard = ({ name, character, profile_path }) => {
@@ -8,4 +9,10 @@ export const ArtistCard = ({ name, character, profile_path }) => {
       <p>Character: {character}</p>
     </WrapArtistCard>
   );
+};
+
+ArtistCard.propTypes = {
+  name: PropTypes.string,
+  character: PropTypes.string,
+  profile_path: PropTypes.string,
 };

@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import PropTypes, { string } from 'prop-types';
 import {
   WrapMainText,
   WrapMainInfo,
@@ -54,4 +55,17 @@ export const MovieCard = ({
       </Suspense>
     </WrapMovieCard>
   );
+};
+
+MovieCard.propTypes = {
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: string,
+    })
+  ),
+  overview: PropTypes.string,
+  poster_path: PropTypes.string,
+  release_date: PropTypes.string,
+  title: PropTypes.string,
+  vote_average: PropTypes.number,
 };
